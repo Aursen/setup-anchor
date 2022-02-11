@@ -46,3 +46,4 @@ runs:
         shell: bash
       - run: npm i -g @project-serum/anchor-cli@${{ inputs.anchor-cli-version }}
         shell: bash
+      - run: npm i -g typescript

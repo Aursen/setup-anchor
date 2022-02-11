@@ -1,0 +1,19 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          solana-cli-version: "1.8.5"
+          anchor-cli-version: "0.20.1"
+          node-version: "16.14.0"
+      - run: anchor --version
+      - run: solana --version

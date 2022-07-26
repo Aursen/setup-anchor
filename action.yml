@@ -1,9 +1,9 @@
-name: 'Setup Anchor'
-description: 'Setup Anchor by installing, downloading, and adding it to the path.'
-author: 'Aursen'
+name: "Setup Anchor"
+description: "Setup Anchor by installing, downloading, and adding it to the path."
+author: "Aursen"
 branding:
-  icon: 'play-circle'
-  color: 'green'
+  icon: "play-circle"
+  color: "green"
 inputs:
   solana-cli-version:
     description: "The Solana CLI version"
@@ -17,35 +17,35 @@ inputs:
 runs:
   using: "composite"
   steps:
-      - uses: actions/checkout@v2
-      # maybe cache
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          profile: minimal
-      - uses: actions/cache@v2
-        name: Cache Solana Tool Suite
-        id: cache-solana
-        with:
-          path: |
-            ~/.cache/solana/
-            ~/.local/share/solana/
-          key: solana-${{ runner.os }}-v0000-${{ inputs.solana-cli-version }}
-      - run: sh -c "$(curl -sSfL https://release.solana.com/v${{ inputs.solana-cli-version }}/install)"
-        shell: bash
-      - run: echo "/home/runner/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
-        shell: bash
-      - run: solana-keygen new --no-bip39-passphrase
-        shell: bash
-      - run: solana config set --url localhost
-        shell: bash
-      - uses: actions/setup-node@v2
-        with:
-          node-version: ${{ inputs.node-version }}
-      # maybe cache
-      - run: npm i -g yarn
-        shell: bash
-      - run: npm i -g @project-serum/anchor-cli@${{ inputs.anchor-cli-version }}
-        shell: bash
-      - run: npm i -g typescript
-        shell: bash
+    - uses: actions/checkout@v2
+    # maybe cache
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        profile: minimal
+    - uses: actions/cache@v2
+      name: Cache Solana Tool Suite
+      id: cache-solana
+      with:
+        path: |
+          ~/.cache/solana/
+          ~/.local/share/solana/
+        key: solana-${{ runner.os }}-v0000-${{ inputs.solana-cli-version }}
+    - run: sh -c "$(curl -sSfL https://release.solana.com/v${{ inputs.solana-cli-version }}/install)"
+      shell: bash
+    - run: echo "/home/runner/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
+      shell: bash
+    - run: solana-keygen new --no-bip39-passphrase
+      shell: bash
+    - run: solana config set --url localhost
+      shell: bash
+    - uses: actions/setup-node@v2
+      with:
+        node-version: ${{ inputs.node-version }}
+    # maybe cache
+    - run: corepack enable
+      shell: bash
+    - run: npm i -g @project-serum/anchor-cli@${{ inputs.anchor-cli-version }}
+      shell: bash
+    - run: npm i -g typescript
+      shell: bash

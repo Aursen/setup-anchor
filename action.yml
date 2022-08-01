@@ -45,7 +45,7 @@ runs:
     # maybe cache
     - run: corepack enable
       shell: bash
-    - run: npm i -g @project-serum/anchor-cli@${{ inputs.anchor-cli-version }}
+    - run: cargo install --git https://github.com/project-serum/anchor --tag v0.25.0 anchor-cli --locked
       shell: bash
     - run: npm i -g typescript
       shell: bash

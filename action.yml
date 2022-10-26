@@ -57,8 +57,8 @@ runs:
           ~/.cargo/registry/cache/
           ~/.cargo/git/db/
           ./target/
-        key: cargo-${{ runner.os }}-anchor-${{ hashFiles('**/Cargo.lock') }}
-    - run: cargo install --git https://github.com/project-serum/anchor --tag v{{ inputs.anchor-cli-version }} anchor-cli --locked
+        key: cargo-${{ runner.os }}-anchor-v${{ inputs.anchor-cli-version }}
+    - run: cargo install --git https://github.com/project-serum/anchor --tag v${{ inputs.anchor-cli-version }} anchor-cli --locked
       shell: bash
     - run: npm i -g typescript
       shell: bash

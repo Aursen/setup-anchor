@@ -46,7 +46,7 @@ runs:
     - run: corepack enable
       shell: bash
     - run: sudo apt-get update && sudo apt-get install -y pkg-config build-essential libudev-dev
-        shell: bash
+      shell: bash
     - uses: actions/cache@v2
       name: Cache Cargo registry + index
       id: cache-anchor

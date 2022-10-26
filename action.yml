@@ -58,7 +58,7 @@ runs:
           ~/.cargo/git/db/
           ./target/
         key: cargo-${{ runner.os }}-anchor-v${{ inputs.anchor-cli-version }}
-    - run: cargo install --git https://github.com/project-serum/anchor --tag v${{ inputs.anchor-cli-version }} anchor-cli --locked
+    - run: cargo install --git https://github.com/project-serum/anchor --tag v${{ inputs.anchor-cli-version }} anchor-cli --locked --force
       shell: bash
     - run: npm i -g typescript
       shell: bash
